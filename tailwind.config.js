@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const daisyui = require('daisyui');
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -17,10 +19,13 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        robotoSlab: 'Roboto Slab',
+        robotoSlab: ['Roboto Slab', 'serif'],
         montserrat: ['Montserrat', 'sans-serif'],
       },
     },
   },
-  plugins: [],
+
+  plugins: [
+    daisyui,
+  ],
 };
