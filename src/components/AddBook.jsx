@@ -64,18 +64,18 @@ function AddBook({ handleAdd }) {
             onChange={handleText}
             value={text}
             placeholder="Book title"
-            className="py-2 px-4 w-full"
+            className="py-2 px-4 w-full bg-white shadow-lg"
           />
         </div>
         <div className="inline-block w-full md:w-7/12">
-          <select onChange={handleCategory} className="py-2 text-gray-400 w-full px-2">
+          <select onChange={handleCategory} className="py-2 text-gray-400 bg-white w-full px-2 shadow-lg">
             <option value="Catigories">Catigories</option>
             <option value="Action">Action</option>
             <option value="Science Fiction">Science Fiction</option>
             <option value="Economy">Economy</option>
           </select>
         </div>
-        <button type="submit" disabled={btnDissable} className="w-full md:w-5/12 bg-blue-500 py-2 text-white rounded-l hover:bg-blue-700">Add</button>
+        <button type="submit" disabled={btnDissable} className="w-full md:w-5/12 bg-blue-500 py-2 text-white rounded-md hover:bg-blue-700 shadow-lg">Add</button>
       </form>
       {message && <div className="messages text-center mt-3">{message}</div>}
     </div>

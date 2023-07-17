@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <section className={darkMode ? 'dark' : ''}>
-        <div className="flex flex-col justify-between bg-gray-100 dark:bg-gray-900">
+        <div className="text-black flex flex-col justify-between bg-gray-100 dark:bg-gray-900">
           <Header dark={handleDarkMode} />
           <main className="container mx-auto px-3 py-5 lg:px-20">
             <Routes>
