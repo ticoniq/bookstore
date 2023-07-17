@@ -50,7 +50,7 @@
 <!-- Live Demo -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-<a href="#"> None 🚀</a>
+<a href="https://bookstore-ab8fwc2h0-ticoniq.vercel.app"> Book Store 🚀</a>
 
 <!-- GETTING STARTED -->
 
@@ -58,7 +58,7 @@
 
 > In order to start with this project do as follows:
 
-To get get a local copy up and running, you can follow these simple steps:
+To get a local copy up and running, you can follow these simple steps:
 
 
 ### Install
