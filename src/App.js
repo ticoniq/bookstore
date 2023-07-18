@@ -1,7 +1,7 @@
 import {
   BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
@@ -13,6 +13,11 @@ function App() {
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  useEffect(() => {
+    const { body } = document;
+    body.setAttribute('data-theme', darkMode);
+  }, [darkMode]);
 
   return (
     <Router>
