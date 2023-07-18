@@ -8,6 +8,7 @@ const initialState = {
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
+  getCategoryStatus: () => 'Under construction',
 });
 
 // console.log(categoriesSlice);
