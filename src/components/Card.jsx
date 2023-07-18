@@ -17,7 +17,7 @@ function Card({
             <a href="#">Edit</a>
           </ul>
         </div>
-        <div className="flex gap-x-2 justify-between flex-row space-y-0 md:w-1/2 items-center">
+        <div className="flex gap-x-2 gap-5 justify-between flex-col space-y-0 md:w-1/2 items-center md:flex-row">
           <div className="flex flex-row gap-2 justify-start items-center ">
             <div className="w-16 h-16 border-gray-200 border-t-blue-600 border-r-blue-600 border-b-blue-600  rounded-full border-6 rotate-45 bg-none none" />
             <div>
@@ -29,7 +29,7 @@ function Card({
           <div className="font-robotoSlab">
             <p className="uppercase text-gray-400 mt-0">Current chapter</p>
             <p className="my-3">{chapter}</p>
-            <a className="p-3 px-6 pt-2 text-white bg-blue-500 baseline rounded-md uppercase text-sm hover:bg-blue-700 md:text-md">update progress</a>
+            <a className="p-2 px-3 pt-2 text-white bg-blue-500 baseline rounded-md uppercase text-sm hover:bg-blue-700 md:text-md">update progress</a>
           </div>
         </div>
       </div>
