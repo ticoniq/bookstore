@@ -7,7 +7,6 @@ function Card({
 }) {
   const getRandomNumber = () => Math.floor(Math.random() * 101);
   const randomNum = getRandomNumber();
-  console.log(randomNum);
   const dispatch = useDispatch();
 
   return (
