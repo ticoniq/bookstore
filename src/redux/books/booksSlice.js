@@ -1,16 +1,15 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// const appId = 'Pv07lkhuAJvBV0UHCald';
 const appId = '8jyxEDElW0vb1k0o9GE1';
 const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
 
 const initialState = {
   bookItems: [],
-  isloading: true,
+  isLoading: true,
 };
 
-export const getBookItems = createAsyncThunk('books/getBookItems', async (thunkAPI) => {
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (thunkAPI) => {
   try {
     const response = await axios(`${url}/${appId}/books`);
     return response.data;
@@ -22,7 +21,7 @@ export const getBookItems = createAsyncThunk('books/getBookItems', async (thunkA
 export const addBookItem = createAsyncThunk('books/addNewBook', async (data, thunkAPI) => {
   try {
     const response = await axios.post(`${url}/${appId}/books`, data);
-    thunkAPI.dispatch(getBookItems());
+    thunkAPI.dispatch(fetchBooks());
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');
@@ -32,7 +31,7 @@ export const addBookItem = createAsyncThunk('books/addNewBook', async (data, thu
 export const removeBookItem = createAsyncThunk('books/removeBookItem', async (id, thunkAPI) => {
   try {
     const response = await axios.delete(`${url}/${appId}/books/${id}`, id);
-    thunkAPI.dispatch(getBookItems());
+    thunkAPI.dispatch(fetchBooks());
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');
@@ -53,11 +52,11 @@ const bookSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getBookItems.pending, (state) => {
-        state.isloading = true;
+      .addCase(fetchBooks.pending, (state) => {
+        state.isLoading = true;
       })
-      .addCase(getBookItems.fulfilled, (state, action) => {
-        state.isloading = false;
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.isLoading = false;
         const data = Object.keys(action.payload).map((item) => {
           const book = {};
           book.author = action.payload[item][0].author;
@@ -68,28 +67,28 @@ const bookSlice = createSlice({
         });
         state.books = data;
       })
-      .addCase(getBookItems.rejected, (state, action) => {
-        state.isloading = false;
+      .addCase(fetchBooks.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(addBookItem.pending, (state) => {
-        state.isloading = true;
+        state.isLoading = true;
       })
       .addCase(addBookItem.fulfilled, (state) => {
-        state.isloading = false;
+        state.isLoading = false;
       })
       .addCase(addBookItem.rejected, (state, action) => {
-        state.isloading = false;
+        state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(removeBookItem.pending, (state) => {
-        state.isloading = true;
+        state.isLoading = true;
       })
       .addCase(removeBookItem.fulfilled, (state) => {
-        state.isloading = false;
+        state.isLoading = false;
       })
       .addCase(removeBookItem.rejected, (state, action) => {
-        state.isloading = false;
+        state.isLoading = false;
         state.error = action.payload;
       });
   },
