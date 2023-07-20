@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeItem } from '../redux/books/booksSlice';
+import { removeBookItem } from '../redux/books/booksSlice';
 
 function Card({
   id, author, title, category,
 }) {
+  const getRandomNumber = () => Math.floor(Math.random() * 101);
+  const randomNum = getRandomNumber();
   const dispatch = useDispatch();
 
   return (
@@ -18,9 +20,9 @@ function Card({
             <button type="button" href="#">Comments</button>
             <button
               type="button"
-              className="border-l-blue-500 border-r-blue-500 border-l-2 border-r-2 px-3 mx-3"
+              className="border-r-blue-500 border-l-2 border-r-2 px-3 mx-3"
               onClick={() => {
-                dispatch(removeItem(id));
+                dispatch(removeBookItem(id));
               }}
             >
               Remove
@@ -30,9 +32,15 @@ function Card({
         </div>
         <div className="flex gap-x-2 gap-5 justify-between flex-col space-y-0 md:w-1/2 items-center md:flex-row">
           <div className="flex flex-row gap-2 justify-start items-center ">
-            <div className="w-16 h-16 border-gray-200 border-t-blue-600 border-r-blue-600 border-b-blue-600  rounded-full border-6 rotate-45 bg-none none" />
+            <div
+              className="radial-progress text-blue-600"
+              style={{ '--value': randomNum }}
+            />
             <div>
-              <h2 className="text-4xl">30%</h2>
+              <h2 className="text-4xl">
+                {randomNum}
+                %
+              </h2>
               <p className="text-gray-400">Completed</p>
             </div>
           </div>

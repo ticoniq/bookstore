@@ -24,7 +24,7 @@ function App() {
       <section className={darkMode ? 'dark' : ''}>
         <div className="text-black flex flex-col justify-between bg-gray-100 dark:bg-gray-900">
           <Header dark={handleDarkMode} />
-          <main className="container mx-auto px-3 py-5 lg:px-20">
+          <main className="container mx-auto px-3 py-5 lg:px-40">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/categories" element={<Categories />} />
