@@ -1,13 +1,43 @@
 import { v4 as uuidv4 } from 'uuid';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewBook } from '../redux/books/booksSlice';
 
-function AddBook({ handleAdd }) {
-  // eslint-disable-next-line no-unused-vars
+function AddBook() {
+  const dispatch = useDispatch();
+
   const [text, setText] = useState('');
   const [category, setCategory] = useState('');
   const [btnDissable, setBtnDissable] = useState(true);
   const [message, setMessage] = useState('');
+
+  const names = [
+    'John',
+    'Jane',
+    'Michael',
+    'Emily',
+    'David',
+    'Sarah',
+    'Matthew',
+    'Olivia',
+    'Daniel',
+    'Sophia',
+    'James',
+    'Isabella',
+    'William',
+    'Ava',
+    'Ethan',
+    'Mia',
+    'Benjamin',
+    'Amelia',
+    'Alexander',
+    'Harper',
+  ];
+
+  function getRandomName() {
+    const randomIndex = Math.floor(Math.random() * names.length);
+    return names[randomIndex];
+  }
 
   const handleText = (e) => {
     if (text === '') {
@@ -33,17 +63,16 @@ function AddBook({ handleAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const newId = uuidv4();
     if (text.trim().length > 2) {
       const newTodo = {
         id: uuidv4(),
+        title: text,
+        author: getRandomName(),
         category,
-        name: text,
-        director: 'Suzanne Collins',
-        completed: '0%',
-        chapter: 'Introduction',
       };
 
-      handleAdd(newTodo);
+      dispatch(addNewBook(newTodo));
       setMessage(null);
       setText('');
     } else {
@@ -81,13 +110,5 @@ function AddBook({ handleAdd }) {
     </div>
   );
 }
-
-AddBook.defaultProps = {
-  handleAdd: () => {},
-};
-
-AddBook.propTypes = {
-  handleAdd: PropTypes.func,
-};
 
 export default AddBook;
